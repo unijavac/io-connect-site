@@ -1,10 +1,10 @@
 :root {
-  --bg: #0d1117;
-  --panel: #151b23;
-  --panel-2: #1b232d;
-  --line: #303944;
+  --bg: #08111c;
+  --panel: #111d2a;
+  --panel-2: #172536;
+  --line: #2c4157;
   --text: #f2f5f8;
-  --muted: #a9b4c0;
+  --muted: #aab9c8;
   --blue: #2962ff;
   --blue-2: #3973ff;
   --orange: #ff7a00;
@@ -99,8 +99,9 @@ h1 {
   border: 1px solid #394451;
   border-radius: 24px;
   overflow: hidden;
-  background: #e9ecef;
-  box-shadow: 0 34px 90px rgba(0,0,0,.28);
+  background: linear-gradient(145deg,#25384b,#0d1724);
+  box-shadow: 0 34px 90px rgba(0,0,0,.42), 0 0 0 1px rgba(82,137,190,.12) inset;
+  padding: 14px;
 }
 .product-hero img {
   display: block;
@@ -123,7 +124,8 @@ h1 {
   object-fit: cover;
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: #e9ecef;
+  background: #cfd6de;
+  filter: contrast(1.07) brightness(.97);
 }
 .product-facts {
   display: grid;
@@ -274,3 +276,7 @@ footer {
   .download-section { margin: 70px 0 80px; padding: 28px 22px; }
   .product-hero { border-radius: 16px; }
 }
+
+/* v8 dark — mocniejsze oddzielenie białej obudowy od tła */
+.product-panel > img { box-shadow: 0 24px 60px rgba(0,0,0,.34); }
+.product-section { background: radial-gradient(circle at 28% 55%, rgba(51,104,155,.10), transparent 34%); }

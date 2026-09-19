@@ -33,3 +33,6 @@ Zrzuty aplikacji są prezentowane w lekkiej ramce telefonu z wyraźnym zaokrągl
 ## v7
 
 Strona pobierania wykorzystuje pełną szerokość głównego layoutu na desktopie, a informacje o wydaniu pozostają na stronie zamiast prowadzić do GitHub.
+
+
+## Wariant v8: dark

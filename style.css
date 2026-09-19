@@ -141,7 +141,7 @@ h1 {
 
 .section { padding: 96px 0; border-top: 1px solid rgba(255,255,255,.08); }
 .section-heading { max-width: 680px; margin-bottom: 42px; }
-.section-heading h2, .app-panel h2, .download-section h2 { font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.04em; margin-bottom: 16px; }
+.section-heading h2, .app-heading h2, .download-section h2 { font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.04em; margin-bottom: 16px; }
 .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .feature-grid article {
   min-height: 230px;
@@ -161,24 +161,29 @@ h1 {
 .app-shot-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: 26px;
+  align-items: start;
 }
 .app-shot-card {
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--panel);
-  overflow: hidden;
+  background: transparent;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .app-shot-card img {
   width: 100%;
+  max-width: 280px;
   height: auto;
   display: block;
-  background: #0f151c;
+  border-radius: 30px;
+  border: 1px solid #46515e;
+  box-shadow: 0 18px 42px rgba(0,0,0,.34);
+  background: #000;
 }
 .app-shot-copy {
-  padding: 18px 18px 20px;
+  width: 100%;
+  max-width: 300px;
+  padding: 16px 2px 0;
 }
 .app-shot-copy h3 {
   margin: 0 0 8px;
@@ -245,7 +250,9 @@ footer {
   .hero { min-height: auto; padding-bottom: 58px; }
   .feature-grid { grid-template-columns: 1fr; }
   .section { padding: 70px 0; }
-  .app-shot-grid { grid-template-columns: 1fr; }
+  .app-shot-grid { grid-template-columns: 1fr; gap: 38px; }
+  .app-shot-card img { max-width: 310px; border-radius: 34px; }
+  .app-shot-copy { max-width: 310px; text-align: center; }
   .download-section { margin: 70px 0 80px; padding: 28px 22px; }
   .product-hero { border-radius: 16px; }
 }

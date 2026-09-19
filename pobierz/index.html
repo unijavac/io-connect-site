@@ -59,8 +59,10 @@
           <span>Android 7.0+</span>
           <span>Podpisany APK</span>
         </div>
-        <a class="button primary large" id="downloadApk" href="https://github.com/unijavac/ioConnect6-App/releases/latest">Pobierz APK</a>
-        <a class="button secondary large" href="../docs/Instrukcja_uzytkownika_ioConnect6.pdf" style="margin-top:12px">Instrukcja użytkownika PDF</a>
+        <div class="download-buttons">
+          <a class="button primary large" id="downloadApk" href="https://github.com/unijavac/ioConnect6-App/releases/latest">Pobierz APK</a>
+          <a class="button secondary large" id="downloadManual" href="https://github.com/unijavac/ioConnect6-App/releases/download/v1.48/Instrukcja_uzytkownika_ioConnect6_v1.14.pdf">Pobierz instrukcję PDF</a>
+        </div>
         <div class="release-notes">
           <strong>ioConnect6 1.48</strong><br>
           Pierwsza publiczna wersja aplikacji: sterowanie 6 wyjściami, wejścia fizyczne, parowanie QR/PIN i aktualizacje firmware OTA.
@@ -96,18 +98,57 @@
   (() => {
     const api = 'https://api.github.com/repos/unijavac/ioConnect6-App/releases/latest';
     const fallback = 'https://github.com/unijavac/ioConnect6-App/releases/latest';
+    const manualFallback = 'https://github.com/unijavac/ioConnect6-App/releases/download/v1.48/Instrukcja_uzytkownika_ioConnect6_v1.14.pdf';
     const button = document.getElementById('downloadApk');
+    const manualButton = document.getElementById('downloadManual');
     const badge = document.getElementById('versionBadge');
+    let manualAsset = null;
+
     fetch(api, { headers: { 'Accept': 'application/vnd.github+json' } })
       .then(r => { if (!r.ok) throw new Error('GitHub API'); return r.json(); })
       .then(release => {
-        const apk = Array.isArray(release.assets) ? release.assets.find(a => a.name && a.name.toLowerCase().endsWith('.apk')) : null;
+        const assets = Array.isArray(release.assets) ? release.assets : [];
+        const apk = assets.find(a => a.name && a.name.toLowerCase().endsWith('.apk'));
+        const pdfs = assets.filter(a => a.name && a.name.toLowerCase().endsWith('.pdf'));
+        pdfs.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+        manualAsset = pdfs[0] || null;
         const version = (release.tag_name || '').replace(/^v/i, '') || 'najnowsza';
         if (badge) badge.textContent = `Aktualna wersja: ${version}`;
         if (apk && apk.browser_download_url) button.href = apk.browser_download_url;
         else button.href = fallback;
+        if (manualButton && manualAsset && manualAsset.browser_download_url) manualButton.href = manualAsset.browser_download_url;
       })
-      .catch(() => { button.href = fallback; });
+      .catch(() => {
+        button.href = fallback;
+        if (manualButton) manualButton.href = manualFallback;
+      });
+
+    if (manualButton) {
+      manualButton.addEventListener('click', async (event) => {
+        if (!manualAsset || !manualAsset.url) return;
+        event.preventDefault();
+        try {
+          const response = await fetch(manualAsset.url, {
+            headers: {
+              'Accept': 'application/octet-stream',
+              'X-GitHub-Api-Version': '2022-11-28'
+            }
+          });
+          if (!response.ok) throw new Error('PDF download');
+          const blob = await response.blob();
+          const objectUrl = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = objectUrl;
+          a.download = manualAsset.name || 'Instrukcja_uzytkownika_ioConnect6.pdf';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+        } catch (_) {
+          window.location.href = manualAsset.browser_download_url || manualFallback;
+        }
+      });
+    }
   })();
   </script>
 </body>

@@ -302,3 +302,6 @@ nav a:hover { color:#132238; }
   box-shadow:0 28px 60px rgba(44,67,91,.19);
   filter:contrast(1.035) brightness(.985);
 }
+
+.download-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.download-buttons .button { flex: 1 1 220px; text-align: center; }

@@ -158,10 +158,11 @@ h1 {
 .app-heading p:not(.eyebrow) { color: var(--muted); }
 .meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .meta-row span { border: 1px solid #3a4654; background: #0f151c; color: #c4ced8; border-radius: 999px; padding: 8px 12px; font-size: .86rem; }
+
 .app-shot-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 26px;
+  gap: 28px;
   align-items: start;
 }
 .app-shot-card {
@@ -169,21 +170,26 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 0;
 }
-.app-shot-card img {
-  width: 100%;
-  max-width: 280px;
-  height: auto;
+.phone-frame {
+  width: min(100%, 260px);
+  padding: 7px;
+  border-radius: 38px;
+  background: #05070a;
+  border: 1px solid #515b66;
+  box-shadow: 0 18px 42px rgba(0,0,0,.36);
+  overflow: hidden;
+}
+.phone-frame img {
   display: block;
-  border-radius: 30px;
-  border: 1px solid #46515e;
-  box-shadow: 0 18px 42px rgba(0,0,0,.34);
-  background: #000;
+  width: 100%;
+  height: auto;
+  border-radius: 31px;
 }
 .app-shot-copy {
-  width: 100%;
-  max-width: 300px;
-  padding: 16px 2px 0;
+  width: min(100%, 280px);
+  padding: 16px 4px 0;
 }
 .app-shot-copy h3 {
   margin: 0 0 8px;
@@ -237,7 +243,7 @@ footer {
   .product-panel { grid-template-columns: 1fr; }
   .product-panel > img { min-height: 0; }
   .feature-grid { grid-template-columns: 1fr 1fr; }
-  .app-shot-grid { grid-template-columns: 1fr 1fr; }
+  .app-shot-grid { grid-template-columns: 1fr 1fr; gap: 34px 24px; }
   .steps { grid-template-columns: 1fr; }
   .download-section { grid-template-columns: 1fr; }
   .download-actions { max-width: 320px; }
@@ -250,9 +256,21 @@ footer {
   .hero { min-height: auto; padding-bottom: 58px; }
   .feature-grid { grid-template-columns: 1fr; }
   .section { padding: 70px 0; }
-  .app-shot-grid { grid-template-columns: 1fr; gap: 38px; }
-  .app-shot-card img { max-width: 310px; border-radius: 34px; }
-  .app-shot-copy { max-width: 310px; text-align: center; }
+  .app-shot-grid {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 2px 2px 18px;
+    margin-inline: -2px;
+  }
+  .app-shot-card {
+    flex: 0 0 min(84vw, 330px);
+    scroll-snap-align: center;
+  }
+  .phone-frame { width: min(100%, 300px); border-radius: 42px; }
+  .phone-frame img { border-radius: 34px; }
+  .app-shot-copy { max-width: 300px; text-align: center; }
   .download-section { margin: 70px 0 80px; padding: 28px 22px; }
   .product-hero { border-radius: 16px; }
 }

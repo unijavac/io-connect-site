@@ -24,3 +24,7 @@ Dodano sekcję pokazującą rzeczywiste zrzuty ekranu aplikacji ioConnect6.
 ## v5
 
 Poprawiono prezentację zrzutów aplikacji: usunięto ciężkie zaokrąglone karty, a same ekrany mają proporcje i narożniki zbliżone do rzeczywistego telefonu.
+
+
+## v6
+Zrzuty aplikacji są prezentowane w lekkiej ramce telefonu z wyraźnym zaokrągleniem; na małych ekranach galeria przewija się poziomo. Dodano cache-busting CSS/JS.

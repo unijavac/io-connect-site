@@ -10,22 +10,26 @@
   <link rel="icon" href="../assets/ioConnect6-icon-512.jpg">
   <link rel="stylesheet" href="../style.css">
   <style>
-    .download-page { max-width: 820px; margin: 0 auto; padding: 76px 0 110px; }
+    .download-page { width: 100%; margin: 0 auto; padding: 64px 0 96px; }
     .back-link { display:inline-block; margin-bottom:34px; color:#a9b4c0; text-decoration:none; }
     .back-link:hover { color:#f2f5f8; }
+    .download-layout { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:20px; align-items:stretch; }
     .download-hero { padding: 42px; border:1px solid #303944; border-radius:20px; background:#151b23; }
     .download-hero h1 { font-size:clamp(2.5rem,7vw,4.4rem); margin-bottom:18px; }
     .download-hero .lead { margin-bottom:28px; }
     .download-meta { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0 30px; }
     .download-meta span { border:1px solid #3a4654; border-radius:999px; padding:8px 12px; color:#c4ced8; font-size:.88rem; background:#0f151c; }
-    .install-card { margin-top:20px; padding:30px; border:1px solid #303944; border-radius:18px; background:#121820; }
+    .install-card { margin-top:0; padding:34px; border:1px solid #303944; border-radius:20px; background:#121820; }
     .install-card h2 { font-size:1.7rem; margin-bottom:18px; }
     .install-list { margin:0; padding-left:1.35rem; color:#c2cbd5; }
     .install-list li { margin:12px 0; padding-left:4px; }
     .notice { margin-top:20px; padding:18px 20px; border-left:3px solid #ff7a00; background:#171d24; color:#aeb9c4; }
     .notice strong { color:#f2f5f8; }
-    .release-link { display:inline-block; margin-top:18px; color:#8ea8ff; text-decoration:none; }
-    .release-link:hover { text-decoration:underline; }
+    .release-notes { margin-top:22px; padding-top:18px; border-top:1px solid #303944; color:#aeb9c4; }
+    .release-notes strong { color:#f2f5f8; }
+    @media (max-width:860px) {
+      .download-layout { grid-template-columns:1fr; }
+    }
     @media (max-width:560px) {
       .download-page { padding-top:42px; }
       .download-hero { padding:26px 22px; }
@@ -45,18 +49,21 @@
     <div class="download-page">
       <a class="back-link" href="../">← Wróć do strony głównej</a>
 
+      <div class="download-layout">
       <section class="download-hero">
         <p class="eyebrow">APLIKACJA ANDROID</p>
         <h1>Pobierz ioConnect6</h1>
-        <p class="lead">Aplikacja do obsługi sterownika ioConnect6. Plik instalacyjny APK jest publikowany w oficjalnym wydaniu projektu.</p>
+        <p class="lead">Aplikacja do obsługi sterownika ioConnect6. Pobierz najnowszą podpisaną wersję APK na telefon z Androidem.</p>
         <div class="download-meta">
           <span id="versionBadge">Aktualna wersja: 1.48</span>
           <span>Android 7.0+</span>
           <span>Podpisany APK</span>
         </div>
         <a class="button primary large" id="downloadApk" href="https://github.com/unijavac/ioConnect6-App/releases/latest">Pobierz APK</a>
-        <br>
-        <a class="release-link" id="releaseLink" href="https://github.com/unijavac/ioConnect6-App/releases/latest">Zobacz informacje o wydaniu →</a>
+        <div class="release-notes">
+          <strong>ioConnect6 1.48</strong><br>
+          Pierwsza publiczna wersja aplikacji: sterowanie 6 wyjściami, wejścia fizyczne, parowanie QR/PIN i aktualizacje firmware OTA.
+        </div>
       </section>
 
       <section class="install-card">
@@ -72,6 +79,7 @@
           Pobieraj ioConnect6 wyłącznie z tej strony. Aplikacja jest podpisana stałym kluczem wydania, co pozwala kolejnym wersjom instalować się jako aktualizacje.
         </div>
       </section>
+      </div>
     </div>
   </main>
 
@@ -89,18 +97,16 @@
     const fallback = 'https://github.com/unijavac/ioConnect6-App/releases/latest';
     const button = document.getElementById('downloadApk');
     const badge = document.getElementById('versionBadge');
-    const releaseLink = document.getElementById('releaseLink');
     fetch(api, { headers: { 'Accept': 'application/vnd.github+json' } })
       .then(r => { if (!r.ok) throw new Error('GitHub API'); return r.json(); })
       .then(release => {
         const apk = Array.isArray(release.assets) ? release.assets.find(a => a.name && a.name.toLowerCase().endsWith('.apk')) : null;
         const version = (release.tag_name || '').replace(/^v/i, '') || 'najnowsza';
         if (badge) badge.textContent = `Aktualna wersja: ${version}`;
-        if (releaseLink && release.html_url) releaseLink.href = release.html_url;
         if (apk && apk.browser_download_url) button.href = apk.browser_download_url;
         else button.href = fallback;
       })
-      .catch(() => { button.href = fallback; releaseLink.href = fallback; });
+      .catch(() => { button.href = fallback; });
   })();
   </script>
 </body>

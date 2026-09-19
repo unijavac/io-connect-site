@@ -28,3 +28,8 @@ Poprawiono prezentację zrzutów aplikacji: usunięto ciężkie zaokrąglone kar
 
 ## v6
 Zrzuty aplikacji są prezentowane w lekkiej ramce telefonu z wyraźnym zaokrągleniem; na małych ekranach galeria przewija się poziomo. Dodano cache-busting CSS/JS.
+
+
+## v7
+
+Strona pobierania wykorzystuje pełną szerokość głównego layoutu na desktopie, a informacje o wydaniu pozostają na stronie zamiast prowadzić do GitHub.

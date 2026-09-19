@@ -14,3 +14,8 @@ Statyczna strona produktu ioConnect6 przygotowana do podglądu przez GitHub Page
 - informacja o 6 wyjściach i wejściach fizycznych
 - podstrona `pobierz/` z instalacją aplikacji
 - dynamiczne odczytywanie aktualnej wersji z GitHub Releases
+
+
+## v4
+
+Dodano sekcję pokazującą rzeczywiste zrzuty ekranu aplikacji ioConnect6.

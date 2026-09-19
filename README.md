@@ -1,5 +1,6 @@
-# ioConnect6 — dark tech v10
+# ioConnect6 — wersja jasna v10
 
-Wariant ciemny wzorowany na zaakceptowanej referencji: granatowo-czarne tło, niebieskie akcenty, karty funkcji, szeroki układ produktowy i zintegrowana sekcja aplikacji.
+Jasny wariant zachowuje dotychczasowy układ i stylistykę.
+Zmiana v10: tylko mocniejsze odcięcie zdjęć białego sterownika od tła.
 
 Wersja robocza: noindex.

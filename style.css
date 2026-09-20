@@ -49,13 +49,13 @@ nav a:hover { color: var(--text); }
 
 main { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
 .hero {
-  width: min(calc(100vw - 40px), 1360px);
+  width: min(calc(100vw - 40px), 1320px);
   margin-left: 50%;
   transform: translateX(-50%);
   min-height: 650px;
   display: grid;
-  grid-template-columns: minmax(0, .58fr) minmax(620px, 1.42fr);
-  gap: 20px;
+  grid-template-columns: minmax(0, .68fr) minmax(560px, 1.32fr);
+  gap: 24px;
   align-items: center;
   padding: 70px 0 80px;
 }
@@ -105,11 +105,15 @@ h1 {
   background: transparent;
   box-shadow: 0 14px 34px rgba(61,84,109,.11);
   padding: 2px;
+  justify-self: end;
+  width: 100%;
 }
 .product-hero img {
   display: block;
   width: 100%;
-  height: auto;
+  height: clamp(470px, 44vw, 610px);
+  object-fit: cover;
+  object-position: center 42%;
 }
 
 
@@ -251,7 +255,7 @@ footer {
     gap: 42px;
     padding-top: 54px;
   }
-  .product-hero { max-width: 720px; }
+  .product-hero { max-width: 720px; justify-self: start; }
   .product-panel { grid-template-columns: 1fr; }
   .product-panel > img { min-height: 0; }
   .feature-grid { grid-template-columns: 1fr 1fr; }

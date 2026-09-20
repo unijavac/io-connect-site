@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pobierz aplikację ioConnect6 na Androida i zobacz krótką instrukcję instalacji.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#f5f8fc">
+  <title>Pobierz ioConnect6</title>
+  <link rel="icon" href="../assets/ioConnect6-icon-512.jpg">
+  <link rel="stylesheet" href="../style.css?v=10-light">
+  <style>
+    .download-page { width: 100%; margin: 0 auto; padding: 64px 0 96px; }
+    .back-link { display:inline-block; margin-bottom:34px; color:#60748a; text-decoration:none; }
+    .back-link:hover { color:#132238; }
+    .download-layout { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:20px; align-items:stretch; }
+    .download-hero { padding: 42px; border:1px solid #d7e0ea; border-radius:20px; background:#ffffff; }
+    .download-hero h1 { font-size:clamp(2.5rem,7vw,4.4rem); margin-bottom:18px; }
+    .download-hero .lead { margin-bottom:28px; }
+    .download-meta { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0 30px; }
+    .download-meta span { border:1px solid #cbd6e1; border-radius:999px; padding:8px 12px; color:#52677d; font-size:.88rem; background:#f7faff; }
+    .install-card { margin-top:0; padding:34px; border:1px solid #d7e0ea; border-radius:20px; background:#ffffff; }
+    .install-card h2 { font-size:1.7rem; margin-bottom:18px; }
+    .install-list { margin:0; padding-left:1.35rem; color:#54697f; }
+    .install-list li { margin:12px 0; padding-left:4px; }
+    .notice { margin-top:20px; padding:18px 20px; border-left:3px solid #ff7a00; background:#f0f5fa; color:#60748a; }
+    .notice strong { color:#132238; }
+    .release-notes { margin-top:22px; padding-top:18px; border-top:1px solid #d7e0ea; color:#60748a; }
+    .release-notes strong { color:#132238; }
+    @media (max-width:860px) {
+      .download-layout { grid-template-columns:1fr; }
+    }
+    @media (max-width:560px) {
+      .download-page { padding-top:42px; }
+      .download-hero { padding:26px 22px; }
+      .install-card { padding:24px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../" aria-label="ioConnect6 — strona główna">
+      <img src="../assets/ioConnect6-icon-512.jpg" alt="" width="44" height="44">
+      <span>ioConnect6</span>
+    </a>
+  </header>
+
+  <main>
+    <div class="download-page">
+      <a class="back-link" href="../">← Wróć do strony głównej</a>
+
+      <div class="download-layout">
+      <section class="download-hero">
+        <p class="eyebrow">APLIKACJA ANDROID</p>
+        <h1>Pobierz ioConnect6</h1>
+        <p class="lead">Aplikacja do obsługi sterownika ioConnect6. Pobierz najnowszą podpisaną wersję APK na telefon z Androidem.</p>
+        <div class="download-meta">
+          <span id="versionBadge">Aktualna wersja: 1.48</span>
+          <span>Android 7.0+</span>
+          <span>Podpisany APK</span>
+        </div>
+        <div class="download-buttons">
+          <a class="button primary large" id="downloadApk" href="https://github.com/unijavac/ioConnect6-App/releases/latest">Pobierz APK</a>
+          <a class="button secondary large" id="downloadManual" href="https://github.com/unijavac/ioConnect6-App/releases/download/v1.48/Instrukcja_uzytkownika_ioConnect6_v1.14.pdf">Pobierz instrukcję PDF</a>
+        </div>
+        <div class="release-notes">
+          <strong>ioConnect6 1.48</strong><br>
+          Pierwsza publiczna wersja aplikacji: sterowanie 6 wyjściami, 6 wejść, parowanie QR/PIN i aktualizacje firmware OTA.
+        </div>
+      </section>
+
+      <section class="install-card">
+        <h2>Instalacja</h2>
+        <ol class="install-list">
+          <li>Pobierz plik APK przyciskiem powyżej.</li>
+          <li>Otwórz pobrany plik na telefonie.</li>
+          <li>Jeśli Android poprosi o zgodę, zezwól używanej przeglądarce na instalowanie aplikacji z tego źródła.</li>
+          <li>Zainstaluj ioConnect6 i uruchom aplikację.</li>
+        </ol>
+        <div class="notice">
+          <strong>Komunikat Androida lub Chrome o pliku APK jest normalny przy instalacji poza Google Play.</strong>
+          Pobieraj ioConnect6 wyłącznie z tej strony. Aplikacja jest podpisana stałym kluczem wydania, co pozwala kolejnym wersjom instalować się jako aktualizacje.
+        </div>
+      </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="brand footer-brand">
+      <img src="../assets/ioConnect6-icon-512.jpg" alt="" width="36" height="36">
+      <span>ioConnect6</span>
+    </div>
+    <p>io-connect.pl</p>
+  </footer>
+
+  <script>
+  (() => {
+    const api = 'https://api.github.com/repos/unijavac/ioConnect6-App/releases/latest';
+    const fallback = 'https://github.com/unijavac/ioConnect6-App/releases/latest';
+    const manualFallback = 'https://github.com/unijavac/ioConnect6-App/releases/download/v1.48/Instrukcja_uzytkownika_ioConnect6_v1.14.pdf';
+    const button = document.getElementById('downloadApk');
+    const manualButton = document.getElementById('downloadManual');
+    const badge = document.getElementById('versionBadge');
+
+    fetch(api, { headers: { 'Accept': 'application/vnd.github+json' } })
+      .then(r => { if (!r.ok) throw new Error('GitHub API'); return r.json(); })
+      .then(release => {
+        const assets = Array.isArray(release.assets) ? release.assets : [];
+        const apk = assets.find(a => a.name && a.name.toLowerCase().endsWith('.apk'));
+        const pdfs = assets.filter(a => a.name && a.name.toLowerCase().endsWith('.pdf'));
+        pdfs.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+        const manualAsset = pdfs[0] || null;
+        const version = (release.tag_name || '').replace(/^v/i, '') || 'najnowsza';
+        if (badge) badge.textContent = `Aktualna wersja: ${version}`;
+        if (apk && apk.browser_download_url) button.href = apk.browser_download_url;
+        else button.href = fallback;
+        if (manualButton && manualAsset && manualAsset.browser_download_url) manualButton.href = manualAsset.browser_download_url;
+      })
+      .catch(() => {
+        button.href = fallback;
+        if (manualButton) manualButton.href = manualFallback;
+      });
+
+  })();
+  </script>
+</body>
+</html>

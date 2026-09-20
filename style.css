@@ -246,6 +246,19 @@ footer {
 }
 .footer-brand { color: #33485e; font-size: 1rem; }
 
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.footer-contact a {
+  color: #315a86;
+  text-decoration: none;
+  font-weight: 600;
+}
+.footer-contact a:hover { text-decoration: underline; }
+
+
 @media (max-width: 860px) {
   nav { display: none; }
   .hero {
@@ -289,6 +302,8 @@ footer {
   .phone-frame img { border-radius: 34px; }
   .app-shot-copy { max-width: 300px; text-align: center; }
   .download-section { margin: 70px 0 80px; padding: 28px 22px; }
+  footer { flex-direction: column; align-items: flex-start; justify-content: center; gap: 14px; padding: 22px 0; }
+  .footer-contact { flex-wrap: wrap; gap: 8px 16px; }
   .product-hero { border-radius: 16px; }
 }
 

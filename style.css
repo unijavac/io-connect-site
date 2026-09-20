@@ -51,8 +51,8 @@ main { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
 .hero {
   min-height: 650px;
   display: grid;
-  grid-template-columns: minmax(0, .87fr) minmax(440px, 1.13fr);
-  gap: 48px;
+  grid-template-columns: minmax(0, .80fr) minmax(460px, 1.20fr);
+  gap: 38px;
   align-items: center;
   padding: 70px 0 80px;
 }

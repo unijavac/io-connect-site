@@ -337,4 +337,5 @@ nav a:hover { color:#132238; }
 .download-buttons .button { flex: 1 1 220px; text-align: center; }
 
 /* Kolor marki jak na obudowie: „Connect” niebieskie */
-.bc { color: #0b6af1; }
+.bc { color: inherit; }
+.brand .bc, h1 .bc, h2 .bc, h3 .bc, footer .bc { color: #0b6af1; }

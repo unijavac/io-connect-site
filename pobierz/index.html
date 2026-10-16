@@ -61,7 +61,7 @@
         </div>
         <div class="download-buttons">
           <a class="button primary large" id="downloadApk" href="https://github.com/unijavac/ioConnect6-App/releases/latest">Pobierz APK</a>
-          <a class="button secondary large" id="downloadManual" href="https://github.com/unijavac/ioConnect6-App/releases/download/v1.64/Instrukcja_uzytkownika_ioConnect6_v1.16.pdf">Pobierz instrukcję PDF</a>
+          <a class="button secondary large" id="downloadManual" href="../docs/Instrukcja_uzytkownika_ioConnect6.pdf" target="_blank" rel="noopener">Pobierz instrukcję PDF</a>
         </div>
         <div class="release-notes">
           <strong>io<span class="bc">Connect</span>6 v1.64</strong><br>
@@ -118,11 +118,9 @@
         if (badge) badge.textContent = `Aktualna wersja: ${version}`;
         if (apk && apk.browser_download_url) button.href = apk.browser_download_url;
         else button.href = fallback;
-        if (manualButton && manualAsset && manualAsset.browser_download_url) manualButton.href = manualAsset.browser_download_url;
       })
       .catch(() => {
         button.href = fallback;
-        if (manualButton) manualButton.href = manualFallback;
       });
 
   })();

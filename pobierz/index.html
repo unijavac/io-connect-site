@@ -55,17 +55,17 @@
         <h1>Pobierz io<span class="bc">Connect</span>6</h1>
         <p class="lead">Aplikacja do obsługi sterownika io<span class="bc">Connect</span>6. Pobierz najnowszą podpisaną wersję APK na telefon z Androidem.</p>
         <div class="download-meta">
-          <span id="versionBadge">Aktualna wersja: 1.63</span>
+          <span id="versionBadge">Aktualna wersja: 1.64</span>
           <span>Android 7.0+</span>
           <span>Podpisany APK</span>
         </div>
         <div class="download-buttons">
           <a class="button primary large" id="downloadApk" href="https://github.com/unijavac/ioConnect6-App/releases/latest">Pobierz APK</a>
-          <a class="button secondary large" id="downloadManual" href="https://github.com/unijavac/ioConnect6-App/releases/download/v1.63/Instrukcja_uzytkownika_ioConnect6_v1.15.pdf">Pobierz instrukcję PDF</a>
+          <a class="button secondary large" id="downloadManual" href="https://github.com/unijavac/ioConnect6-App/releases/download/v1.64/Instrukcja_uzytkownika_ioConnect6_v1.16.pdf">Pobierz instrukcję PDF</a>
         </div>
         <div class="release-notes">
-          <strong>io<span class="bc">Connect</span>6 v1.63</strong><br>
-          Blokada kanału podczas trwającego harmonogramu, PIN przy zmianie harmonogramu, nowe działanie wejścia w trybie Przełącznik oraz „Wyłącz wszystkie” z pierwszeństwem harmonogramu. Wymaga firmware 3.31 – aplikacja zaproponuje aktualizację sterownika.
+          <strong>io<span class="bc">Connect</span>6 v1.64</strong><br>
+          Czytelniejszy znak blokady harmonogramu na przyciskach kanałów. Razem z firmware 3.32: usunięcie lub wyłączenie zdarzenia w Kalendarzu od razu zdejmuje blokadę i wyłącza kanał. Aplikacja zaproponuje aktualizację sterownika.
         </div>
       </section>
 
@@ -101,7 +101,7 @@
   (() => {
     const api = 'https://api.github.com/repos/unijavac/ioConnect6-App/releases/latest';
     const fallback = 'https://github.com/unijavac/ioConnect6-App/releases/latest';
-    const manualFallback = 'https://github.com/unijavac/ioConnect6-App/releases/download/v1.63/Instrukcja_uzytkownika_ioConnect6_v1.15.pdf';
+    const manualFallback = 'https://github.com/unijavac/ioConnect6-App/releases/download/v1.64/Instrukcja_uzytkownika_ioConnect6_v1.16.pdf';
     const button = document.getElementById('downloadApk');
     const manualButton = document.getElementById('downloadManual');
     const badge = document.getElementById('versionBadge');
